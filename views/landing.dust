@@ -1,0 +1,37 @@
+{!{>"index" /}
+{< maincontent}  !}
+<form method="post" action="/home" data-js="newtransactions">
+	<p>Transaction history for {month}, {year}</p>
+	<table class="table table-bordered edit">
+		<thead>
+			<th>Date</th>
+			<th>Description</th>
+			<th>Amount</th>
+			<th>Source</th>
+		</thead>
+		<tbody>
+			{#data.trans_details}
+				<tr>
+					<td>{date}</td>
+					<td>{description}</td>
+					<td>{amount}</td>
+					<td>{source}</td>
+				</tr>
+			{/data.trans_details}
+		</tbody>
+		{^data.trans_details}
+			<tfoot>
+				<tr><td colspan="4" style="text-align:center;color:#666;">There is no transction added for this month</td></tr>
+			</tfoot>
+		{/data.trans_details}
+	</table>
+
+	<input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary">
+	<input type="submit" name="submit" value="Go back" style="float: right;" class="btn">
+</form>
+
+	
+
+
+<a href="" id="addTransaction"> Add a new transaction </a>
+{!/maincontent!}

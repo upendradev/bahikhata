@@ -1,0 +1,50 @@
+{>"index" /}
+{< maincontent}
+	<h1> Welcome {data.user} !</h1>
+	<p class="balance">Your available balance - Rs. {data.balance} </p>
+
+	<div class="tabbable tabs-left">
+	  <ul class="nav nav-tabs">
+	  	<li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
+    	<li><a href="#tab2" data-toggle="tab">Go to transaction history page</a></li>
+    	<li><a href="#tab3" data-toggle="tab">Add funds</a></li>
+    	<li><a href="#tab4" data-toggle="tab">Add a new funding source</a></li>
+    	<li><a href="#tab5" data-toggle="tab">Add savings</a></li>
+	  </ul>
+	  <div class="tab-content">
+	   	<div class="tab-pane active" id="tab1">
+	      <p>Last 10 transaction</p>
+	      <table class="table table-striped">
+	      	<thead>
+	      		<th>Date</th>
+	      		<th>Details</th>
+	      		<th>Amount</th>
+	      		<th>Source</th>
+	      	</thead>
+	      	<tbody>
+	      		{#data.tranasctions}
+	      			<tr>
+		      			<td>{date}</td>
+		      			<td>{details}</td>
+		      			<td>{amount}</td>
+		      			<td>{source}</td>
+		      		</tr>
+	      		{/data.tranasctions}
+	      	</tbody>
+	      </table>
+	    </div>
+	    <div class="tab-pane" id="tab2">
+	      <p>{>"landing" /}</p>
+	    </div>
+	     <div class="tab-pane" id="tab3">
+	      <p>{>"addfunds" /}</p>
+	    </div>
+	     <div class="tab-pane" id="tab4">
+	      <p>{>"addsavings" /}</p>
+	    </div>
+
+	    <p><a href="#tab2">Test router</a></p>
+		
+	</div>
+	
+{/maincontent}

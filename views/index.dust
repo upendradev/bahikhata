@@ -1,1 +1,43 @@
-This is dust template
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<title>BAHIKHATA</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-responsive.min.css">
+		<script type="text/javascript" src="js/modernizr-v2.6.2.js"></script>
+	</head>
+	<body>
+		<section id="content">
+			<header>
+				<h1 class="logo">BAHIKHATA</h1>
+				<section id="utility">
+					<ul>
+						{^data.loggedIn}<li><a href="/signup">Sign up</a></li>{/data.loggedIn}
+						{?data.loggedIn}<li><a href="/logout">logout</a></li>{/data.loggedIn}
+					</ul>
+
+				</section>
+			</header>
+			<ul class="nav nav-tabs">
+			  <li class="active">
+			    <a href="#">Home</a>
+			  </li>
+			  <li><a href="#">Profile</a></li>
+			  <li><a href="#">Contact</a></li>
+			</ul>
+			<section id="main">
+				{?data.sessionTimeout}
+					<div class="alert">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong>Warning!</strong> {data.sessionTimeout}
+					</div>
+				{/data.sessionTimeout}
+				{+maincontent /}
+			</section>
+		</section>
+		<script data-main="js/main" src="js/require.js"></script>
+	</body>
+</html>
+

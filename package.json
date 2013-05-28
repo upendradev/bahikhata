@@ -6,10 +6,11 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "3.1.0",
-    "jade": "*",
-    "dust": "dustjs-linkedin",
+    "express": "3.x",
+    "dustjs-linkedin": "*",
+    "dustjs-helpers": "*",
     "consolidate": "*",
-    "less-middleware": "*"
+    "less-middleware": "*",
+    "nodemon":"*"
   }
 }
