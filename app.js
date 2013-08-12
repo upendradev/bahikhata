@@ -13,8 +13,47 @@ var express = require('express')
   ,util = require('util');
 
 var app = express();
+/*
 var mongo = require('mongodb')
-  Db = mongo.Db;
+  Db = mongo.Db;   
+
+
+*/
+
+/**
+* Mongo DB setup
+*
+*/
+
+if(process.env.VCAP_SERVICES){
+    var env = JSON.parse(process.env.VCAP_SERVICES);
+    var mongo = env['mongodb-1.8'][0]['credentials'];
+}
+else{
+    var mongo = {
+        "hostname":"localhost",
+        "port":27017,
+        "username":"",
+        "password":"",
+        "name":"",
+        "db":"bahikhata"
+    }
+}
+var generate_mongo_url = function(obj){
+    obj.hostname = (obj.hostname || 'localhost');
+    obj.port = (obj.port || 27017);
+    obj.db = (obj.db || 'test');
+    if(obj.username && obj.password){
+        return "mongodb://" + obj.username + ":" + obj.password + "@" + obj.hostname + ":" + obj.port + "/" + obj.db;
+    }
+    else{
+        return "mongodb://" + obj.hostname + ":" + obj.port + "/" + obj.db;
+    }
+}
+var mongourl = generate_mongo_url(mongo);
+
+console.log(mongourl);
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -88,25 +127,25 @@ app.post('/home', preProcess ,function(req, res, next){
            res.render('welcome', req.model);
   }
   else if(req.body.username){
-    var server = new mongo.Server("127.0.0.1", 27017, {});
-      new Db('bahikhata', server, {}).open(function (error, client) {
+    
+      require('mongodb').connect(mongourl , function (error, db) {
         if (error) throw error;
-        var collection = new mongo.Collection(client, 'users'),
-            tranasctions = new mongo.Collection(client, 'history'),
-            profile = new mongo.Collection(client, 'profile'),
+        var users = db.collection('users'),
+       //     tranasctions = new mongo.Collection(client, 'history'),
+       //     profile = new mongo.Collection(client, 'profile'),
             balance;
-             tranasctions.find().toArray(function(err, results){
+      /*       tranasctions.find().toArray(function(err, results){
                req.session.data.tranasctions = results;
             });
 
              profile.find({user: req.body.username}).toArray(function(err, result) {
                 req.session.data.balance  = result[0].balance; 
             
-            });
+            }); */
              
-        collection.find({username: req.body.username}, {limit:10}).toArray(function(err, docs) {
+        users.find({user_id: req.body.username}, {limit:10}).toArray(function(err, docs) {
           details = docs;
-          if(docs.length > 0 && details[0].username === req.body.username && details[0].password === req.body.password){
+          if(docs.length > 0 && details[0].user_id === req.body.username && details[0].password === req.body.password){
             req.session.data.currentSession = req.sessionID;
             var balance;
             req.session.data.loggedIn = 'true';
