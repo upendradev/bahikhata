@@ -56,6 +56,23 @@ var mongourl = generate_mongo_url(mongo);
 
 console.log(mongourl);  */
 
+
+/**
+
+  Mongo DB setup for Jistu
+
+
+  */
+
+  var mongodb = require('mongodb'),
+    db = new mongodb.Db('nodejitsudb4316283727',
+      new mongodb.Server('dharma.mongohq.com', 10059, {})
+    );
+
+
+
+
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -130,9 +147,16 @@ app.post('/home', preProcess ,function(req, res, next){
   }
   else if(req.body.username){
     
-      require('mongodb').connect("mongodb://nodejitsu:b8352371d860968e0c19d3f96ed77003@dharma.mongohq.com:10059/nodejitsudb4316283727" , function (error, db) {
-        if (error) throw error;
-        var users = db.collection('users'),
+      db.open(function open(err, client) {
+          if (err) {
+            throw err;
+          }
+
+          db.authenticate('nodejitsu', 'b8352371d860968e0c19d3f96ed77003', function authenticate(err, replies) {
+            if (err) {
+              throw err;
+            }
+          var users = new mongodb.Collection(client, 'users'),
        //     tranasctions = new mongo.Collection(client, 'history'),
        //     profile = new mongo.Collection(client, 'profile'),
             balance;
@@ -162,8 +186,8 @@ app.post('/home', preProcess ,function(req, res, next){
         
       });
     });
+  });
   }
-   
 } );
 
 
