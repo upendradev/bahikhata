@@ -25,6 +25,8 @@ var mongo = require('mongodb')
 *
 */
 
+/*
+
 if(process.env.VCAP_SERVICES){
     var env = JSON.parse(process.env.VCAP_SERVICES);
     var mongo = env['mongodb-1.8'][0]['credentials'];
@@ -52,7 +54,7 @@ var generate_mongo_url = function(obj){
 }
 var mongourl = generate_mongo_url(mongo);
 
-console.log(mongourl);
+console.log(mongourl);  */
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -155,9 +157,9 @@ app.post('/home', preProcess ,function(req, res, next){
             res.render('welcome', req.model); 
           }
          else{
-          res.redirect('/');
+          res.render('error', {error: details[0].user_id});
         }
-        server.close();
+        
       });
     });
   }
