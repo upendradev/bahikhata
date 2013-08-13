@@ -128,7 +128,7 @@ app.post('/home', preProcess ,function(req, res, next){
   }
   else if(req.body.username){
     
-      require('mongodb').connect(mongourl , function (error, db) {
+      require('mongodb').connect("mongodb://nodejitsu:b8352371d860968e0c19d3f96ed77003@dharma.mongohq.com:10059/nodejitsudb4316283727" , function (error, db) {
         if (error) throw error;
         var users = db.collection('users'),
        //     tranasctions = new mongo.Collection(client, 'history'),
