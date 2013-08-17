@@ -43,7 +43,7 @@
 	      <p>{>"addsavings" /}</p>
 	    </div>
 
-	    <p><a href="#tab2">Test router</a></p>
+	   {! <p><a href="#tab2">Test router</a></p> !}
 		
 	</div>
 	

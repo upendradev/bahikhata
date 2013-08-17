@@ -170,28 +170,28 @@ app.post('/home', preProcess ,function(req, res, next){
                 req.session.data.balance  = result[0].balance; 
             
             }); */
-
+console.log(users.find());
          
              
-        users.find({user_id: "admin"}, {limit:10}).toArray(function(err, docs) {
+        users.find({}, {limit:10}).toArray(function(err, docs) {
           details = docs;
-           console.log(docs.user_id);
-          if(docs.length > 0 && details[0].user_id === req.body.username && details[0].password === req.body.password){
+          if(docs.length > 0 && (docs.length > 0 && details[0].user_id === req.body.username && details[0].password === req.body.password)){
             req.session.data.currentSession = req.sessionID;
             var balance;
             req.session.data.loggedIn = 'true';
-            req.session.data.user = details[0].name ;
+            req.session.data.user = details[0].user_id ;
             req.model.data = req.session.data;
             console.log(req.session.data);
             res.render('welcome', req.model); 
           }
          else{
-          res.render('error', {error: details[0].user_id});
+          res.render('error', {error: req.body.username });
         }
         
       });
     });
   });
+  
   }
 } );
 
@@ -216,6 +216,38 @@ http.createServer(app).listen(app.get('port'), function(){
 app.get('/addfunds', validateLogin, function(req, res, next){
    res.render('addfunds', req.model);
 });
+
+app.get('/signup', function(req, res, next){
+   res.render('signup', req.model);
+});
+
+
+app.post('/signup-submit', function(req, res, next){
+      db.open(function(err, client) {
+          if (err) {
+                 console.log('failed o[pen');
+            throw err;
+          }
+
+          db.authenticate('nodejitsu', 'b8352371d860968e0c19d3f96ed77003', function authenticate(err, replies) {
+            if (err) {
+              console.log('failed');
+              throw err;
+              
+            }
+           
+            var users = db.collection('users'),
+              balance;
+
+                console.log(users);
+            users.insert({user_id: req.body.username, password: req.body.password});
+          });
+        });
+     db.close();  
+   res.render('login', req.model);
+});
+
+
 
 /**
 
