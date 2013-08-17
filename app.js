@@ -65,9 +65,7 @@ console.log(mongourl);  */
   */
 
   var mongodb = require('mongodb'),
-    db = new mongodb.Db('nodejitsudb4316283727',
-      new mongodb.Server('dharma.mongohq.com', 10059, {})
-    );
+    db = new mongodb.Db('nodejitsudb4316283727', new mongodb.Server('dharma.mongohq.com', 10059, {}));
 
 
 
@@ -146,17 +144,21 @@ app.post('/home', preProcess ,function(req, res, next){
            res.render('welcome', req.model);
   }
   else if(req.body.username){
-    
-      db.open(function open(err, client) {
+      console.log("enter");
+      db.open(function(err, client) {
           if (err) {
+                 console.log('failed o[pen');
             throw err;
           }
 
           db.authenticate('nodejitsu', 'b8352371d860968e0c19d3f96ed77003', function authenticate(err, replies) {
             if (err) {
+              console.log('failed');
               throw err;
+              
             }
-          var users = new mongodb.Collection(client, 'users'),
+             console.log('auth passed');
+          var users = db.collection('users'),
        //     tranasctions = new mongo.Collection(client, 'history'),
        //     profile = new mongo.Collection(client, 'profile'),
             balance;
@@ -168,9 +170,12 @@ app.post('/home', preProcess ,function(req, res, next){
                 req.session.data.balance  = result[0].balance; 
             
             }); */
+
+         
              
-        users.find({user_id: req.body.username}, {limit:10}).toArray(function(err, docs) {
+        users.find({user_id: "admin"}, {limit:10}).toArray(function(err, docs) {
           details = docs;
+           console.log(docs.user_id);
           if(docs.length > 0 && details[0].user_id === req.body.username && details[0].password === req.body.password){
             req.session.data.currentSession = req.sessionID;
             var balance;
