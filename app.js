@@ -102,6 +102,7 @@ var preProcess = function(req, res, next){
   req.model = {};
 
   req.model.data= req.session.data || {};
+  req.session.data.balance = '10,000';
   
   next();
 };

@@ -1,5 +1,4 @@
 define(['jquery','underscore', 'backbone','bootstrap','jqueryUI'], function($, _, Backbone){
-
 	$(document).ready(function(){
 
 			var TransactionModel = Backbone.Model.extend({
@@ -9,10 +8,7 @@ define(['jquery','underscore', 'backbone','bootstrap','jqueryUI'], function($, _
 				}
 
 			});
-
 	var txnModel = new TransactionModel;
-
-
 	var user = Backbone.Model.extend({
 				defaults:{
 					username: '',
@@ -40,9 +36,6 @@ define(['jquery','underscore', 'backbone','bootstrap','jqueryUI'], function($, _
 			});
 
 	userModel = new user({validate:true});
-
-	
-
 	var view = Backbone.View.extend({
 		el: '#main',
 		initialize: function(){
@@ -51,9 +44,6 @@ define(['jquery','underscore', 'backbone','bootstrap','jqueryUI'], function($, _
 			this.render();
 		},
 		render: function(){
-
-
-
 		},
 		events:{
 

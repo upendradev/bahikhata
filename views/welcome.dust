@@ -1,6 +1,6 @@
 {>"index" /}
 {< maincontent}
-	<h1> Welcome {data.user} !</h1>
+	<h2> Welcome {data.user} !</h2>
 	<p class="balance">Your available balance - Rs. {data.balance} </p>
 
 	<div class="tabbable tabs-left">
@@ -40,6 +40,9 @@
 	      <p>{>"addfunds" /}</p>
 	    </div>
 	     <div class="tab-pane" id="tab4">
+	      <p>{>"addfundingsource" /}</p>
+	    </div>
+	    <div class="tab-pane" id="tab5">
 	      <p>{>"addsavings" /}</p>
 	    </div>
 

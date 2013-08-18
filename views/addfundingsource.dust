@@ -1,5 +1,2 @@
-{>"index" /}
-{< maincontent}
-	<h1> Select a funding source</h1>
-	
-{/maincontent}
+
+	<h4> Select a funding source</h4>

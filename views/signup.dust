@@ -1,18 +1,23 @@
 {>"index" /}
 {< maincontent}
-	<h1>Login here</h1>
 	<form action="/signup-submit" method="post">
 		<fieldset>
-			<legend>Type your user name and password.</legend>
+			<h2>Create an account</h2>
 			
-			<label for="username">Enter your user name or email id</label>
+			<label for="username">User name</label>
 			<p class="error"></p>
-			<input name=username type="text" id="username" placeholder="User name or email id"> 
-			<label for="password">Enter your password</label>
+			<input name=username type="text" id="username" placeholder="User name"> 
+			<label for="password">Choose your password</label>
 			<p class="error"></p>
 			<input name=password type="password" id="password" placeholder="Password">
+			<label for="re-password">Confirm your password</label>
+			<p class="error"></p>
+			<input name="re-password" type="password" id="re-password" placeholder="Re-enter your password">
+			<label for="email">Email id</label>
+			<p class="error"></p>
+			<input name="email" type="email" id="email" placeholder="Enter your email id">
 			<div class="buttons">
-				<input type="submit" name="login" value="Login" id="login" class="btn btn-primary">
+				<input type="submit" name="login" value="Submit" id="login" class="btn btn-primary">
 			</div>
 		</fieldset>	
 	</form>

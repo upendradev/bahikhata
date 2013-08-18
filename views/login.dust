@@ -1,9 +1,9 @@
 {>"index" /}
 {< maincontent}
-	<h1>Login here</h1>
+	
 	<form action="/home" method="post">
 		<fieldset>
-			<legend>Type your user name and password.</legend>
+			<legend><h2>Login here</h2></legend>
 			
 			<label for="username">Enter your user name or email id</label>
 			<p class="error"></p>
