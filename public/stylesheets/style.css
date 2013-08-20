@@ -42,6 +42,12 @@ label {
   float: left;
   letter-spacing: -3px;
 }
+#wrapper header .logo a:hover,
+#wrapper header .logo a,
+#wrapper header .logo a:active {
+  text-decoration: none;
+  color: #0079C1;
+}
 #wrapper header nav {
   float: left;
   position: relative;

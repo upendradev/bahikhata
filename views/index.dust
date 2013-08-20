@@ -13,7 +13,7 @@
 		<section id="wrapper">
 			<header>
 				<div class="container">
-					<h1 class="logo">BAHIKHATA</h1>
+					<h1 class="logo"><a href="/">BAHIKHATA<a></h1>
 					<nav role="navigation">
 						<ul class="nav nav-tabs">
 						  <li class="active">
