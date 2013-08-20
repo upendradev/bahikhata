@@ -1,7 +1,8 @@
 {>"index" /}
 {< maincontent}
 	
-	<form action="/home" method="post">
+	<div class="row-fluid">
+	 <div class="span4"><form action="/home" method="post">
 		<fieldset>
 			<legend><h2>Login here</h2></legend>
 			
@@ -12,8 +13,21 @@
 			<p class="error"></p>
 			<input name=password type="password" id="password" placeholder="Password">
 			<div class="buttons">
-				<input type="submit" name="login" value="Login" id="login" class="btn btn-primary">
+				<input type="submit" name="login" value="Login" id="login" class="btn btn-primary"> -- OR -- <a href="signup"> Signup</a>
 			</div>
 		</fieldset>	
-	</form>
+	</form></div>
+  <div class="span8">
+  		<article>
+  			<div class="banner">
+  				<h4>Tracking your daily expenses is a good habit. But managing it in an excelsheet is time consuming. Now forget about excelsheet, switch to bahikhata.</h4>
+
+  				<a href="/signup">Sign up now</a>
+  			</div>
+  		</article>
+  	
+  	</div>
+ 
+</div>
+	
 {/maincontent}

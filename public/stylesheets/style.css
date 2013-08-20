@@ -64,7 +64,8 @@ label {
   list-style: none;
 }
 #wrapper .container {
-  width: 988px;
+  /* width: 988px; */
+
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -82,9 +83,9 @@ ul.nav-tabs .active > a {
 }
 #main {
   box-shadow: 0px 20px 20px 2px gray;
-  padding: 0 20px;
+  padding: 40px 20px 0 ;
   position: relative;
-  top: 100px;
+  top: 60px;
   min-height: 600px;
 }
 #main > h2 {
@@ -149,4 +150,35 @@ input.small {
 .add-funds-input {
   float: left;
   margin-right: 20px;
+}
+#main article {
+  margin-top: 60px;
+}
+#main .banner {
+  height: 250px;
+  background-color: #00abec;
+  padding: 40px;
+  position: relative;
+}
+#main .banner h4 {
+  font-size: 2em;
+  font-weight: 200;
+  color: #fff;
+  line-height: 39px;
+  text-align: center;
+}
+#main .banner a {
+  position: absolute;
+  bottom: 51px;
+  color: #000000;
+  padding: 10px 0;
+  right: 0;
+  font-weight: 700;
+  background: #aad12e;
+  display: block;
+  text-align: center;
+  font-size: 1.15em;
+  width: 40%;
+  text-transform: uppercase;
+  margin-left: -40px;
 }

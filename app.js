@@ -224,7 +224,7 @@ app.get('/signup', function(req, res, next){
 
 
 app.post('/signup-submit', function(req, res, next){
-      db.open(function(err, client) {
+  /*    db.open(function(err, client) {
           if (err) {
                  console.log('failed o[pen');
             throw err;
@@ -244,7 +244,7 @@ app.post('/signup-submit', function(req, res, next){
             users.insert({user_id: req.body.username, password: req.body.password});
           });
         });
-     db.close();  
+     db.close();  */
    res.render('login', req.model);
 });
 
